@@ -1,9 +1,9 @@
+import HomePage from './pages/HomePage.tsx'
 function App() {
     return (
-        <>
-            <p></p>
-            <h1>Hello</h1>
-        </>
+        <div className="container">
+            <HomePage />
+        </div>
     )
 }
 
