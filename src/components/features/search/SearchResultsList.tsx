@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { RecipeContext } from '../../../context/RecipeContext.tsx';
 import RecipePreviewItem from '../../ui/RecipePreviewItem.tsx';
-import icons from '../../../assets/img/icons.svg';
+import Spinner from '../../ui/Spinner.tsx';
+import ErrorMessage from '../../ui/ErrorMessage.tsx';
 
 function SearchResultsList() {
     const {
@@ -13,26 +14,11 @@ function SearchResultsList() {
     } = useContext(RecipeContext);
 
     if (isLoading) {
-        return (
-            <div className="spinner">
-                <svg>
-                    <use href={`${icons}#icon-loader`}></use>
-                </svg>
-            </div>
-        );
+        return <Spinner />;
     }
 
     if (error || searchResults.length === 0) {
-        return (
-            <div className="error">
-                <div>
-                    <svg>
-                        <use href={`${icons}#icon-alert-triangle`}></use>
-                    </svg>
-                </div>
-                <p>No recipes found for your query. Please try again!</p>
-            </div>
-        );
+        return <ErrorMessage />;
     }
     return (
         <ul className="results">
