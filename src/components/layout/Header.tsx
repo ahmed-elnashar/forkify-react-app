@@ -1,23 +1,12 @@
 import logo from '../../assets/img/logo.png';
 import icons from '../../assets/img/icons.svg';
+import SearchForm from '../features/search/SearchForm.tsx';
 
 function Header() {
     return (
         <header className="header">
             <img src={logo} alt="Logo" className="header__logo" />
-            <form className="search">
-                <input
-                    type="text"
-                    className="search__field"
-                    placeholder="Search over 1,000,000 recipes..."
-                />
-                <button className="btn search__btn">
-                    <svg className="search__icon">
-                        <use href={`${icons}#icon-search`}></use>
-                    </svg>
-                    <span>Search</span>
-                </button>
-            </form>
+            <SearchForm />
 
             <nav className="nav">
                 <ul className="nav__list">
@@ -52,18 +41,23 @@ function Header() {
                                     </p>
                                 </div>
 
-                                {/*<li class="preview">*/}
-                                {/*  <a class="preview__link" href="#23456">*/}
-                                {/*    <figure class="preview__fig">*/}
-                                {/*      <img src="assets/img/test-1.jpg" alt="Test" />*/}
-                                {/*    </figure>*/}
-                                {/*    <div class="preview__data">*/}
-                                {/*      <h4 class="preview__name">*/}
-                                {/*        Pasta with Tomato Cream ...*/}
-                                {/*      </h4>*/}
-                                {/*      <p class="preview__publisher">The Pioneer Woman</p>*/}
-                                {/*    </div>*/}
-                                {/*  </a>*/}
+                                {/*<li className="preview">*/}
+                                {/*    <a className="preview__link" href="#23456">*/}
+                                {/*        <figure className="preview__fig">*/}
+                                {/*            <img*/}
+                                {/*                src="assets/img/test-1.jpg"*/}
+                                {/*                alt="Test"*/}
+                                {/*            />*/}
+                                {/*        </figure>*/}
+                                {/*        <div className="preview__data">*/}
+                                {/*            <h4 className="preview__name">*/}
+                                {/*                Pasta with Tomato Cream ...*/}
+                                {/*            </h4>*/}
+                                {/*            <p className="preview__publisher">*/}
+                                {/*                The Pioneer Woman*/}
+                                {/*            </p>*/}
+                                {/*        </div>*/}
+                                {/*    </a>*/}
                                 {/*</li>*/}
                             </ul>
                         </div>
