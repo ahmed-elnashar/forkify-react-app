@@ -7,6 +7,7 @@ function SearchForm() {
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         search(query);
+        setQuery('');
     }
 
     return (

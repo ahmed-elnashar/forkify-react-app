@@ -7,6 +7,8 @@ interface RecipeContextInterface {
     setSearchResults: React.Dispatch<React.SetStateAction<Recipe[]>>;
     selectedRecipe: RecipeDetail;
     setSelectedRecipe: React.Dispatch<React.SetStateAction<RecipeDetail>>;
+    selectedRecipeId: string;
+    setSelectedRecipeId: React.Dispatch<React.SetStateAction<string>>;
     bookmarks: Recipe[];
     setBookmarks: React.Dispatch<React.SetStateAction<Recipe[]>>;
     isLoading: boolean;
@@ -22,6 +24,8 @@ export const RecipeContext = createContext<RecipeContextInterface>({
     setSearchResults: () => {},
     selectedRecipe: {} as any,
     setSelectedRecipe: () => {},
+    selectedRecipeId: '',
+    setSelectedRecipeId: () => {},
     bookmarks: [],
     setBookmarks: () => {},
     isLoading: false,
@@ -37,6 +41,7 @@ const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
     const [selectedRecipe, setSelectedRecipe] = useState<RecipeDetail>(
         {} as any
     );
+    const [selectedRecipeId, setSelectedRecipeId] = useState<string>('');
     const [bookmarks, setBookmarks] = useState<Recipe[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
@@ -49,6 +54,8 @@ const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
                 setSearchResults,
                 selectedRecipe,
                 setSelectedRecipe,
+                selectedRecipeId,
+                setSelectedRecipeId,
                 bookmarks,
                 setBookmarks,
                 isLoading,
