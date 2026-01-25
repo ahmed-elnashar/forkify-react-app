@@ -1,6 +1,6 @@
-import Header from '../components/layout/Header.tsx'
-import SearchResultsSideBar from '../components/layout/SearchResultsSideBar.tsx'
-import RecipeMainLayout from '../components/layout/RecipeMainLayout.tsx'
+import Header from '../components/layout/Header.tsx';
+import SearchResultsSideBar from '../components/layout/SearchResultsSideBar.tsx';
+import RecipeMainLayout from '../components/layout/RecipeMainLayout.tsx';
 function HomePage() {
     return (
         <>
@@ -8,6 +8,6 @@ function HomePage() {
             <SearchResultsSideBar />
             <RecipeMainLayout />
         </>
-    )
+    );
 }
-export default HomePage
+export default HomePage;

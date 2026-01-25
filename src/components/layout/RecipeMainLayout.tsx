@@ -1,4 +1,4 @@
-import icons from '../../assets/img/icons.svg'
+import icons from '../../assets/img/icons.svg';
 
 function RecipeMainLayout() {
     return (
@@ -123,6 +123,6 @@ function RecipeMainLayout() {
             {/*  </a>*/}
             {/*</div>*/}
         </div>
-    )
+    );
 }
-export default RecipeMainLayout
+export default RecipeMainLayout;

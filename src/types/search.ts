@@ -1,16 +1,16 @@
-import type { Recipe, RecipeDetail } from './recipe.ts'
+import type { Recipe, RecipeDetail } from './recipe.ts';
 
 export type SearchRecipesResponse = {
-    status: 'success' | 'error'
-    results: number
+    status: 'success' | 'error';
+    results: number;
     data: {
-        recipes: Recipe[]
-    }
-}
+        recipes: Recipe[];
+    };
+};
 
 export type GetRecipeDetailResponse = {
-    status: 'success' | 'error'
+    status: 'success' | 'error';
     data: {
-        recipe: RecipeDetail
-    }
-}
+        recipe: RecipeDetail;
+    };
+};

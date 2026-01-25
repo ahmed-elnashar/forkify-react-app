@@ -48,6 +48,6 @@ function SearchResultsSideBar() {
                 claim as your own.
             </p>
         </div>
-    )
+    );
 }
-export default SearchResultsSideBar
+export default SearchResultsSideBar;

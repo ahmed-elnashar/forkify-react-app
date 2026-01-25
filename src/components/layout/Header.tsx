@@ -1,5 +1,5 @@
-import logo from '../../assets/img/logo.png'
-import icons from '../../assets/img/icons.svg'
+import logo from '../../assets/img/logo.png';
+import icons from '../../assets/img/icons.svg';
 
 function Header() {
     return (
@@ -71,6 +71,6 @@ function Header() {
                 </ul>
             </nav>
         </header>
-    )
+    );
 }
-export default Header
+export default Header;
