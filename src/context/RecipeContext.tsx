@@ -15,8 +15,6 @@ interface RecipeContextInterface {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
     error: string;
     setError: React.Dispatch<React.SetStateAction<string>>;
-    servings: number;
-    setServings: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const RecipeContext = createContext<RecipeContextInterface>({
@@ -32,8 +30,6 @@ export const RecipeContext = createContext<RecipeContextInterface>({
     setIsLoading: () => {},
     error: '',
     setError: () => {},
-    servings: 4,
-    setServings: () => {},
 });
 
 const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
@@ -45,7 +41,6 @@ const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
     const [bookmarks, setBookmarks] = useState<Recipe[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
-    const [servings, setServings] = useState<number>(4);
 
     return (
         <RecipeContext
@@ -62,8 +57,6 @@ const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
                 setIsLoading,
                 error,
                 setError,
-                servings,
-                setServings,
             }}
         >
             {children}

@@ -17,7 +17,7 @@ function SearchResultsList() {
         return <Spinner />;
     }
 
-    if (error || searchResults.length === 0) {
+    if (error || (searchResults.length === 0 && !selectedRecipeId)) {
         return <ErrorMessage />;
     }
     return (

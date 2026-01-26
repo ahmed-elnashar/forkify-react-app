@@ -613,6 +613,9 @@ body {
     margin-right: 0.5rem;
     flex: 0 0 auto;
 }
+.recipe__description > span.recipe__unit {
+    margin-right: 0.5rem;
+}
 .recipe__directions {
     padding: 5rem 10rem;
     padding-bottom: 5rem;

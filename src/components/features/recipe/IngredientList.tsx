@@ -10,12 +10,13 @@ function IngredientList({
         <div className="recipe__ingredients">
             <h2 className="heading--2">Recipe ingredients</h2>
             <ul className="recipe__ingredient-list">
-                {ingredients.map((ingredient, idx) => (
-                    <IngredientItem
-                        ingredient={ingredient}
-                        key={`${id}-${idx}`}
-                    />
-                ))}
+                {ingredients &&
+                    ingredients.map((ingredient, idx) => (
+                        <IngredientItem
+                            ingredient={ingredient}
+                            key={`${id}-${idx}`}
+                        />
+                    ))}
             </ul>
         </div>
     );

@@ -9,6 +9,7 @@ export default function useRecipe() {
         setIsLoading,
         error,
         setError,
+        setSelectedRecipeId,
     } = useContext(RecipeContext);
 
     const fetchRecipeById = async (id: string) => {
@@ -23,10 +24,28 @@ export default function useRecipe() {
         }
     };
 
+    const updateServings = (newServing: number) => {
+        const newIngredients = selectedRecipe.ingredients.map((ingredient) => {
+            return {
+                ...ingredient,
+                quantity:
+                    (ingredient.quantity * newServing) /
+                    selectedRecipe.servings,
+            };
+        });
+        setSelectedRecipe((prev) => ({
+            ...prev,
+            ingredients: newIngredients,
+            servings: newServing,
+        }));
+    };
+
     return {
         fetchRecipeById,
         selectedRecipe,
+        updateServings,
         isLoading,
         error,
+        setSelectedRecipeId,
     };
 }

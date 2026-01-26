@@ -7,7 +7,13 @@ import WelcomeMessage from '../ui/WelcomeMessage.tsx';
 import RecipeDetailView from '../features/recipe/RecipeDetailView.tsx';
 
 function RecipeMainLayout() {
-    const { fetchRecipeById, selectedRecipe, error, isLoading } = useRecipe();
+    const {
+        fetchRecipeById,
+        selectedRecipe,
+        setSelectedRecipeId,
+        error,
+        isLoading,
+    } = useRecipe();
     const { hash } = useLocation();
 
     useEffect(() => {
@@ -16,6 +22,7 @@ function RecipeMainLayout() {
                 if (hash) {
                     const id = hash.replace('#', '');
                     await fetchRecipeById(id);
+                    setSelectedRecipeId(id);
                 }
             } catch (e) {
                 console.log(e);
