@@ -1,6 +1,7 @@
 import type { Recipe } from '../../types/recipe.ts';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import icons from '../../assets/img/icons.svg';
 function RecipePreviewItem({
     item,
     selectedRecipeId,
@@ -37,7 +38,7 @@ function RecipePreviewItem({
                     <p className="preview__publisher">{publisher}</p>
                     <div className="preview__user-generated">
                         <svg>
-                            <use href="src/img/icons.svg#icon-user"></use>
+                            <use href={`${icons}#icon-user`}></use>
                         </svg>
                     </div>
                 </div>
