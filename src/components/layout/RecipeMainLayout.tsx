@@ -11,6 +11,7 @@ function RecipeMainLayout() {
         fetchRecipeById,
         selectedRecipe,
         setSelectedRecipeId,
+        setSelectedRecipe,
         error,
         isLoading,
     } = useRecipe();
@@ -23,6 +24,9 @@ function RecipeMainLayout() {
                     const id = hash.replace('#', '');
                     await fetchRecipeById(id);
                     setSelectedRecipeId(id);
+                } else {
+                    setSelectedRecipeId('');
+                    setSelectedRecipe(null as any);
                 }
             } catch (e) {
                 console.log(e);

@@ -1,6 +1,7 @@
-import { createContext, type ReactNode, useState } from 'react';
+import { createContext, type ReactNode, useEffect, useState } from 'react';
 import type { Recipe, RecipeDetail } from '../types/recipe.ts';
 import React from 'react';
+import useLocalStorage from '../hooks/useLocalStorage.ts';
 
 interface RecipeContextInterface {
     searchResults: Recipe[];
@@ -41,6 +42,11 @@ const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
     const [bookmarks, setBookmarks] = useState<Recipe[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
+    const { value } = useLocalStorage('bookmarks', []);
+
+    useEffect(() => {
+        setBookmarks(value ?? []);
+    }, []);
 
     return (
         <RecipeContext

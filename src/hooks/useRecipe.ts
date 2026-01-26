@@ -47,5 +47,6 @@ export default function useRecipe() {
         isLoading,
         error,
         setSelectedRecipeId,
+        setSelectedRecipe,
     };
 }

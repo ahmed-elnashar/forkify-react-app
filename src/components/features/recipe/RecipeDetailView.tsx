@@ -9,6 +9,7 @@ function RecipeDetailView({
 }: {
     selectedRecipe: RecipeDetail;
 }) {
+    if (!selectedRecipe) return null;
     return (
         <>
             <RecipeHeader recipeDetail={selectedRecipe} />

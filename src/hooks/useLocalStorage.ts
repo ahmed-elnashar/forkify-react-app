@@ -19,8 +19,8 @@ export default function useLocalStorage(key: string, initialValue: any) {
 
     const set = (newValue: any) => {
         try {
-            localStorage.setItem(key, newValue);
-            setValue(newValue);
+            localStorage.setItem(key, JSON.stringify(newValue));
+            setValue(JSON.stringify(newValue));
         } catch (e) {
             console.log('Error setting value into localstorage: ' + e);
         }

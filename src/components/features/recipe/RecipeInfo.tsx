@@ -1,11 +1,19 @@
 import type { RecipeDetail } from '../../../types/recipe.ts';
 import icons from '../../../assets/img/icons.svg';
 import ServingsControls from './ServingsControls.tsx';
-function RecipeInfo({
-    recipeDetail: { cooking_time, servings },
-}: {
-    recipeDetail: RecipeDetail;
-}) {
+import useBookmarks from '../../../hooks/useBookmarks.ts';
+function RecipeInfo({ recipeDetail }: { recipeDetail: RecipeDetail }) {
+    const { cooking_time, servings, id } = recipeDetail;
+    const { addToBookmarks, removeFromBookmarksById, checkIfBookmarked } =
+        useBookmarks();
+
+    const handleBookmark = () => {
+        if (checkIfBookmarked(id)) {
+            removeFromBookmarksById(id);
+        } else {
+            addToBookmarks(recipeDetail);
+        }
+    };
     return (
         <div className="recipe__details">
             <div className="recipe__info">
@@ -34,9 +42,11 @@ function RecipeInfo({
                     <use href={`${icons}#icon-user`}></use>
                 </svg>
             </div>
-            <button className="btn--round">
+            <button className="btn--round" onClick={handleBookmark}>
                 <svg className="">
-                    <use href={`${icons}#icon-bookmark-fill`}></use>
+                    <use
+                        href={`${icons}#${checkIfBookmarked(id) ? 'icon-bookmark' : 'icon-bookmark-fill'}`}
+                    ></use>
                 </svg>
             </button>
         </div>

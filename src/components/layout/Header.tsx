@@ -1,8 +1,10 @@
 import logo from '../../assets/img/logo.png';
 import icons from '../../assets/img/icons.svg';
 import SearchForm from '../features/search/SearchForm.tsx';
+import useBookmarks from '../../hooks/useBookmarks.ts';
 
 function Header() {
+    const { bookmarks } = useBookmarks();
     return (
         <header className="header">
             <img src={logo} alt="Logo" className="header__logo" />
@@ -27,38 +29,48 @@ function Header() {
                         </button>
                         <div className="bookmarks">
                             <ul className="bookmarks__list">
-                                <div className="message">
-                                    <div>
-                                        <svg>
-                                            <use
-                                                href={`${icons}#icon-smile`}
-                                            ></use>
-                                        </svg>
+                                {(!bookmarks || bookmarks.length === 0) && (
+                                    <div className="message">
+                                        <div>
+                                            <svg>
+                                                <use
+                                                    href={`${icons}#icon-smile`}
+                                                ></use>
+                                            </svg>
+                                        </div>
+                                        <p>
+                                            No bookmarks yet. Find a nice recipe
+                                            and bookmark it :)
+                                        </p>
                                     </div>
-                                    <p>
-                                        No bookmarks yet. Find a nice recipe and
-                                        bookmark it :)
-                                    </p>
-                                </div>
-
-                                {/*<li className="preview">*/}
-                                {/*    <a className="preview__link" href="#23456">*/}
-                                {/*        <figure className="preview__fig">*/}
-                                {/*            <img*/}
-                                {/*                src="assets/img/test-1.jpg"*/}
-                                {/*                alt="Test"*/}
-                                {/*            />*/}
-                                {/*        </figure>*/}
-                                {/*        <div className="preview__data">*/}
-                                {/*            <h4 className="preview__name">*/}
-                                {/*                Pasta with Tomato Cream ...*/}
-                                {/*            </h4>*/}
-                                {/*            <p className="preview__publisher">*/}
-                                {/*                The Pioneer Woman*/}
-                                {/*            </p>*/}
-                                {/*        </div>*/}
-                                {/*    </a>*/}
-                                {/*</li>*/}
+                                )}
+                                {bookmarks &&
+                                    bookmarks.map((bookmark) => (
+                                        <li
+                                            className="preview"
+                                            key={bookmark.id}
+                                        >
+                                            <a
+                                                className="preview__link"
+                                                href={`#${bookmark.id}`}
+                                            >
+                                                <figure className="preview__fig">
+                                                    <img
+                                                        src={bookmark.image_url}
+                                                        alt={bookmark.title}
+                                                    />
+                                                </figure>
+                                                <div className="preview__data">
+                                                    <h4 className="preview__name">
+                                                        {bookmark.title}
+                                                    </h4>
+                                                    <p className="preview__publisher">
+                                                        {bookmark.publisher}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    ))}
                             </ul>
                         </div>
                     </li>
