@@ -9,6 +9,7 @@ export default function useRecipeSearch() {
         setIsLoading,
         error,
         setError,
+        setCurrentPage,
     } = useContext(RecipeContext);
 
     const search = async (query: string) => {
@@ -16,6 +17,7 @@ export default function useRecipeSearch() {
         try {
             const results = await searchRecipes(query);
             setSearchResults(results.data.recipes);
+            setCurrentPage(0);
         } catch (e: any) {
             setError('Error searching recipes ' + e?.message);
         } finally {

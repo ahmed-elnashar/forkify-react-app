@@ -127,12 +127,16 @@ body {
 .btn--inline span {
     margin: 0 0.4rem;
 }
-.btn--inline:hover {
+.btn--inline:hover:not(:disabled) {
     color: #f48982;
     background-color: #f2efee;
 }
 .btn--inline:focus {
     outline: none;
+}
+.btn--inline:disabled {
+    cursor: not-allowed;
+    color: #f3aaa2;
 }
 
 .btn--round {
@@ -465,6 +469,9 @@ body {
 .pagination {
     margin-top: auto;
     padding: 0 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .pagination::after {
     content: '';

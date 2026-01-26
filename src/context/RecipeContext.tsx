@@ -16,6 +16,8 @@ interface RecipeContextInterface {
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
     error: string;
     setError: React.Dispatch<React.SetStateAction<string>>;
+    currentPage: number;
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const RecipeContext = createContext<RecipeContextInterface>({
@@ -31,6 +33,8 @@ export const RecipeContext = createContext<RecipeContextInterface>({
     setIsLoading: () => {},
     error: '',
     setError: () => {},
+    currentPage: 0,
+    setCurrentPage: () => {},
 });
 
 const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
@@ -43,6 +47,7 @@ const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
     const { value } = useLocalStorage('bookmarks', []);
+    const [currentPage, setCurrentPage] = useState<number>(0);
 
     useEffect(() => {
         setBookmarks(value ?? []);
@@ -63,6 +68,8 @@ const RecipeContextProvider = ({ children }: { children: ReactNode }) => {
                 setIsLoading,
                 error,
                 setError,
+                currentPage,
+                setCurrentPage,
             }}
         >
             {children}

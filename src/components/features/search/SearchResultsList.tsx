@@ -3,26 +3,24 @@ import { RecipeContext } from '../../../context/RecipeContext.tsx';
 import RecipePreviewItem from '../../ui/RecipePreviewItem.tsx';
 import Spinner from '../../ui/Spinner.tsx';
 import ErrorMessage from '../../ui/ErrorMessage.tsx';
+import usePagination from '../../../hooks/usePagination.ts';
 
 function SearchResultsList() {
-    const {
-        searchResults,
-        isLoading,
-        error,
-        selectedRecipeId,
-        setSelectedRecipeId,
-    } = useContext(RecipeContext);
+    const { isLoading, error, selectedRecipeId, setSelectedRecipeId } =
+        useContext(RecipeContext);
+
+    const { paginatedResults } = usePagination();
 
     if (isLoading) {
         return <Spinner />;
     }
 
-    if (error || (searchResults.length === 0 && !selectedRecipeId)) {
+    if (error || (paginatedResults.length === 0 && !selectedRecipeId)) {
         return <ErrorMessage />;
     }
     return (
         <ul className="results">
-            {searchResults.map((item) => (
+            {paginatedResults.map((item) => (
                 <RecipePreviewItem
                     item={item}
                     key={item.id}
