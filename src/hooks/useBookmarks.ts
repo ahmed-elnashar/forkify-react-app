@@ -22,6 +22,7 @@ export default function useBookmarks() {
         });
     };
 
+    // isBookmarked is a better name
     const checkIfBookmarked = (id: string): boolean => {
         return bookmarks.filter((b) => b.id === id).length > 0;
     };
